@@ -1,0 +1,547 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="FHN}r6X.dY2~*4=H`cx(">response</variable>
+    <variable id="0D`BNNIb2nl,{_^LQ.ro">i</variable>
+  </variables>
+  <block type="s4d_login" id=")O7+PL3eS1Br}h;?X9N$" x="-1255" y="58">
+    <value name="TOKEN">
+      <block type="text" id="a7JxIIyK[Yr~TPL^-{W:">
+        <field name="TEXT">MTE1MDUyNTE2MzM1MjM3NTMzNg.GWmHKU.iXuOsxSqYRTx1LfRV9-N7FMx7ccBfKsbaqeAd8</field>
+      </block>
+    </value>
+  </block>
+  <block type="s4d_on_message" id="[CFg=f^eE9:Ul;)jw4ba" x="-901" y="166">
+    <statement name="STATEMENTS">
+      <block type="controls_if" id="+:}f__wDA=dP-}AJ*uK)">
+        <value name="IF0">
+          <block type="s4d_includes" id="9*/BQhagc}eX_3t*:a1c">
+            <value name="TEXT">
+              <shadow type="text" id="C`7:MO`MgX;b7($BqDZS">
+                <field name="TEXT">abc</field>
+              </shadow>
+              <block type="s4d_message_content" id="en6pCg@G:rZCUSa8Qx9{"></block>
+            </value>
+            <value name="INCLUDES">
+              <shadow type="text" id="x{hA(uFE.m2%h9@7a_2G">
+                <field name="TEXT">rover</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="INW(!Pxdj.@/b_uxEe`7">
+            <field name="VAR" id="FHN}r6X.dY2~*4=H`cx(">response</field>
+            <value name="VALUE">
+              <block type="lists_create_with" id="cqa@,[el3=IX4~,_=!7,">
+                <mutation items="3"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="-UOz/}|o.9#r)4-!}?8|">
+                    <field name="TEXT">Did someone say my name?</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id=".O5esh.T`HvZ$JB3uNSi">
+                    <field name="TEXT">*Sneeze*</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id="s3Bu^)gln,BuO=fD-my4">
+                    <field name="TEXT">woof</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="s4d_reply" id=";z^a[,J%NQoGX{1`}_75">
+                <value name="CONTENT">
+                  <shadow type="text" id="4QK93;l-jyq7deQ-1A|U">
+                    <field name="TEXT">Hey!</field>
+                  </shadow>
+                  <block type="lists_getIndex" id="(F{c(t{q8t|,BWc3?+4;">
+                    <mutation statement="false" at="false"></mutation>
+                    <field name="MODE">GET</field>
+                    <field name="WHERE">RANDOM</field>
+                    <value name="VALUE">
+                      <block type="variables_get" id="^~j_pBl?-L;qOE)~e[^D">
+                        <field name="VAR" id="FHN}r6X.dY2~*4=H`cx(">response</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="jg_event_message_when_a_message_is_recieved_and_author_isnt_a_bot" id="B2(*G8:I,=WiX]=R7hvf" x="-2075" y="348">
+    <statement name="STATEMENTS">
+      <block type="controls_if" id="7;OgYM?zf0inW+3JT[u+">
+        <value name="IF0">
+          <block type="logic_compare" id="hbl|@}1^5]49nlKzNlm?">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="s4d_message_channel_raw" id="Oa+SRy$;,8tDw3hK+(B:">
+                <field name="SEARCH_TYPE">ID</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="jg_text_remake_paragraph_quotes" id="F+}(rcO*86p!(k{SjzO;">
+                <field name="TEXT">1152696923602559016</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="/uJRVSSBA/GpBxj$ON/1">
+            <value name="IF0">
+              <block type="s4d_starts_with" id="|T=9u:[TK?%E4qPc[hH#">
+                <value name="STRING">
+                  <shadow type="text" id="?!0V~Jzvpz*%|M/0@HAu">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="s4d_message_content" id="FF%cQ:mBa/_2`)D#T=kZ"></block>
+                </value>
+                <value name="SUBSTRING">
+                  <shadow type="text" id=".-Lx9H-XS5}qEYT497?4">
+                    <field name="TEXT">r-help</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="s4d_embed_create" id="z@vj^i8C4We|#};A+1_x">
+                <field name="NAME">w</field>
+                <statement name="THEN">
+                  <block type="s4d_embed_set_title" id="0@A3|T3pVu1)wyt4kU7h">
+                    <value name="TITLE">
+                      <shadow type="text" id="zX~J~3@|TYO1x;9:4n-W">
+                        <field name="TEXT">Shopkeeper Commands</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="s4d_embed_set_desc" id="+QG8qx[.e`R)96TQL@Q0">
+                        <value name="DESC">
+                          <shadow type="text" id="QkbJuH=D(Q;uJ/U7EJI=">
+                            <field name="TEXT">Some desc here...</field>
+                          </shadow>
+                          <block type="jg_text_remake_paragraph_quotes" id="7g,_.TQEHR#+%.5.=i*$">
+                            <field name="TEXT">**!bal**&amp;#10;     ❖ View your balance&amp;#10;&amp;#10;**!bal @[user]**&amp;#10;     ❖ View someone else's balance(remove brackets)&amp;#10;&amp;#10;**!with [value]**&amp;#10;     ❖ Withdraw money from your bank(remove brackets)&amp;#10;&amp;#10;**!!dep [value]**&amp;#10;     ❖ Deposit money into your bank(remove brackets)&amp;#10;&amp;#10;**!lb**&amp;#10;     ❖ See the leaderboard&amp;#10;&amp;#10;**!give-money @[user]**&amp;#10;     ❖ Transaction: give money to another user(comes from your own balance)&amp;#10;&amp;#10;**/item inventory**&amp;#10;     ❖ View the items in your inventory&amp;#10;&amp;#10;**/item-give**&amp;#10;     ❖ Transaction: give an item to another user(comes from your own inventory)&amp;#10;&amp;#10;**/item info**&amp;#10;     ❖ You can view more information about a specific item</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="s4d_embed_set_color" id="3LP~T{D3%:{N3yB2vlmR">
+                            <value name="COLOUR">
+                              <shadow type="colour_picker" id="m]MIT^QzYkP$SiSiN|E|">
+                                <field name="COLOUR">#3366ff</field>
+                              </shadow>
+                              <block type="fz_color" id="IfH`KlMN^u4N,:EQyIt)">
+                                <field name="COLOR">#3e69ff</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="s4d_send_channel" id="o?H+N|R(E8LfOkwQ06gG">
+                    <value name="CONTENT">
+                      <block type="s4d_embed_send" id="K4ad]-Q88,=zx+#gT==%">
+                        <field name="NAME">w</field>
+                      </block>
+                    </value>
+                    <value name="CHANNEL">
+                      <block type="s4d_get_channel" id="MRP8Yz2=?9u/OiDF8lIE">
+                        <field name="SEARCH_TYPE">ID</field>
+                        <value name="VALUE">
+                          <block type="jg_text_remake_paragraph_quotes" id="bE,$-^fcBm9cP#jHAmtG">
+                            <field name="TEXT">1152696923602559016</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="jg_event_message_when_a_message_is_recieved_and_author_isnt_a_bot" id="k.)#5NsHX,ZO1a{Nknba" x="-117" y="264">
+    <statement name="STATEMENTS">
+      <block type="controls_if" id="Cr$f.P2*Nq2Dl}?D!r`(">
+        <value name="IF0">
+          <block type="logic_compare" id="Nv7^vYVWXfXaH9`o]yk)">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="s4d_message_channel_raw" id="?2X3os{eo3p$V7X|fB5f">
+                <field name="SEARCH_TYPE">ID</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="jg_text_remake_paragraph_quotes" id="MCcz4eSo7;7!?F^F+0ko">
+                <field name="TEXT">1150838224873341069</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="jg_channel_get_last_messages_in_channel_then" id="`Uu;#N}k15jlm!Ik3KKa">
+            <value name="AMOUNT">
+              <block type="math_number" id="C7:ElL$mEm2_i,l_SZ:_">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+            <value name="CHANNEL">
+              <block type="s4d_get_channel" id="95#O{{(#faT^2J_*R6#n">
+                <field name="SEARCH_TYPE">ID</field>
+                <value name="VALUE">
+                  <block type="jg_text_remake_paragraph_quotes" id="6)?b#ANrPfa%C0fl9-sv">
+                    <field name="TEXT">1150838224873341069</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="STATEMENTS">
+              <block type="controls_for" id="9!)`,$d|*T1{n{=0(b=%">
+                <field name="VAR" id="0D`BNNIb2nl,{_^LQ.ro">i</field>
+                <value name="FROM">
+                  <shadow type="math_number" id="R}SbwBbSS`#^Q9V)OfO|">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <value name="TO">
+                  <shadow type="math_number" id="Cm1iWUQ^9)}kcxg:nBqy">
+                    <field name="NUM">5</field>
+                  </shadow>
+                </value>
+                <value name="BY">
+                  <shadow type="math_number" id="]z4tCV:ur!Da=G]?ClB`">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <statement name="DO">
+                  <block type="controls_if" id="c897z,R.yG7g|NZ^_^H+">
+                    <value name="IF0">
+                      <block type="ahq_embed_is" id="mX{MqKl[5WjZueH*e3[b">
+                        <value name="member">
+                          <block type="jg_channel_last_message_number" id=":Zl!?$4K8nuIF}V*?5%{">
+                            <value name="INDEX">
+                              <block type="variables_get" id="`.sJ5|x-7/!PfG0(uu.*">
+                                <field name="VAR" id="0D`BNNIb2nl,{_^LQ.ro">i</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="jg_messages_delete_message" id="iq1.{5B|cK36Zewg/]yh">
+                        <value name="MESSAGE">
+                          <block type="jg_channel_last_message_number" id="enXbmBPKK0L6=~0h~0nN">
+                            <value name="INDEX">
+                              <block type="variables_get" id="*v#M(gw3W;:[zCM4Se:8">
+                                <field name="VAR" id="0D`BNNIb2nl,{_^LQ.ro">i</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="vhAZ0HM/Z6g09IH/lx(Q">
+                <value name="IF0">
+                  <block type="s4d_starts_with" id="ea@#.Vi~Ha;nxT(}vnj.">
+                    <value name="STRING">
+                      <block type="s4d_message_content" id="pyFMNvR6J#o6Ky/UA~]f"></block>
+                    </value>
+                    <value name="SUBSTRING">
+                      <block type="jg_text_remake_paragraph_quotes" id="Fz*=)!TLl(^ks(I@-4Lr">
+                        <field name="TEXT">https://toyhou.se/</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="s4d_embed_create" id="$MgtaBTYdy0uiMQs{|HM">
+                    <field name="NAME">Verified</field>
+                    <comment pinned="false" h="80" w="160">make sure to change the color of the embed to correct hex code
+
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    </comment>
+                    <statement name="THEN">
+                      <block type="s4d_embed_set_title" id="BA4NB{_cg=_W7vW4b-l.">
+                        <value name="TITLE">
+                          <shadow type="text" id="}}3KYqverFReQK,kZQZ1">
+                            <field name="TEXT">Success!</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="s4d_embed_set_desc" id="7,4R-[OYs$gM+z4yP2+)">
+                            <value name="DESC">
+                              <shadow type="text" id="!7b95,_o(unhWzVLKNv#">
+                                <field name="TEXT">You have been verified! 恭喜，你已通过验证！</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="s4d_embed_set_color" id="WeN{I#c/XO/ryAtx0br#">
+                                <value name="COLOUR">
+                                  <shadow type="colour_picker" id="{W)[/*j|Bvb@id.2na#k">
+                                    <field name="COLOUR">#3366ff</field>
+                                  </shadow>
+                                  <block type="fz_color" id="Bg1b/X8yF}@yDHp+a%(7">
+                                    <field name="COLOR">#3e69ff</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="s4d_add_reaction" id="FxFK7wUC[%04xyA%sf=p">
+                        <value name="REACTION">
+                          <block type="jg_text_remake_paragraph_quotes" id="sEZId*PzLA6uc=$0@Gi8">
+                            <field name="TEXT">&lt;a:verified:1150992996800667788&gt;</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="s4d_add_role" id="sbDY,A(J6CaX*;uJ2[eL">
+                            <value name="ROLE">
+                              <block type="jg_text_remake_paragraph_quotes" id="H55V0Owrn)-wvhP-FR-C">
+                                <field name="TEXT">Citizen</field>
+                              </block>
+                            </value>
+                            <value name="MEMBER">
+                              <shadow type="s4d_message_member" id="krhG]u+f45[+he8a.71j"></shadow>
+                            </value>
+                            <next>
+                              <block type="s4d_reply" id="uK*MztBt^O^W}sGQ2bKS">
+                                <value name="CONTENT">
+                                  <block type="s4d_embed_send" id="$vzO{F3F,ec1aBrFDEUK">
+                                    <field name="NAME">Verified</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="s4d_embed_create" id="NUux0DbPjp2L5g|[oej8">
+                    <field name="NAME">Verify</field>
+                    <statement name="THEN">
+                      <block type="s4d_embed_set_title" id="N:PG/}G~Bp=P#~$Cye*0">
+                        <value name="TITLE">
+                          <shadow type="text" id="_8]TYLF4$?3rL{pOn`f$">
+                            <field name="TEXT">Verify Instructions</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="s4d_embed_set_desc" id="9Uyk3[dVOJ=62xdmnRQM">
+                            <value name="DESC">
+                              <shadow type="text" id="v!l{FDel.!`^5dZtxq7~">
+                                <field name="TEXT">Please enter your toyhou.se profile link in order to be verified and given access to the rest of the server. **This process is automated.** If you don't have toyhouse, you can send a different social link. (This will be reviewed manually by a moderator) 请在这里发你的toyhou.se人物简介。验证过程是全自动的，除非你没发toyhou.se。如果没有toyhou.se的话，你可以发送社交简介。（Mod 会审批的）</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="s4d_embed_set_color" id="nE)AR4W=si-N~+aSOG8b">
+                                <value name="COLOUR">
+                                  <shadow type="colour_picker" id="pYxwe]J`i%z%K)|),ywi">
+                                    <field name="COLOUR">#3366ff</field>
+                                  </shadow>
+                                  <block type="fz_color" id="5(K~I56a8{Omt:2SIOJk">
+                                    <field name="COLOR">#3e69ff</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="s4d_send_channel" id="DY7!!I[:S4HUO0mSw8Lt">
+                        <value name="CONTENT">
+                          <block type="s4d_embed_send" id="lU*FfQ;`WIlNde|6bhuM">
+                            <field name="NAME">Verify</field>
+                          </block>
+                        </value>
+                        <value name="CHANNEL">
+                          <block type="s4d_get_channel" id="@suMtNCLNz,l])*{/Pw5">
+                            <field name="SEARCH_TYPE">ID</field>
+                            <value name="VALUE">
+                              <block type="jg_text_remake_paragraph_quotes" id="wp1Wm9y]lwloD^g!DWDT">
+                                <field name="TEXT">1150838224873341069</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="jg_event_message_when_a_message_is_recieved_and_author_isnt_a_bot" id="mTWwF0G6eb~;D{xk03J?" x="-1088" y="673">
+    <statement name="STATEMENTS">
+      <block type="controls_if" id="`RzM3+gV^Rh]t39@y#7T">
+        <value name="IF0">
+          <block type="logic_compare" id=";_F^1r9xOIRo,]ylXKL!">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="s4d_message_channel_raw" id="8BM(TWlEJ-S#($6c,8,L">
+                <field name="SEARCH_TYPE">ID</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="jg_text_remake_paragraph_quotes" id="Heg#,DoXMB-Cvd1CEn;Y">
+                <field name="TEXT">1150544561991590058</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="s4d_embed_create" id="):yf)AymoL@iH$%tD*0(">
+            <field name="NAME">Rules</field>
+            <statement name="THEN">
+              <block type="s4d_embed_set_title" id="(KZZ_m^W_[|TD.nBKh{y">
+                <value name="TITLE">
+                  <shadow type="text" id="`4!zJyNS3lDTwW[sRBH[">
+                    <field name="TEXT">Server Rules</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="s4d_embed_set_color" id="i`?i|%(xP^J1p3VT,gus">
+                    <value name="COLOUR">
+                      <shadow type="colour_picker" id="m]MIT^QzYkP$SiSiN|E|">
+                        <field name="COLOUR">#3366ff</field>
+                      </shadow>
+                      <block type="fz_color" id="qBE,.}`7b[XxX.*f@3K9">
+                        <field name="COLOR">#3e69ff</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="s4d_embed_set_desc" id=".LC4T6o]Hfr=k}u@Jls1">
+                        <value name="DESC">
+                          <shadow type="text" id="#X!Uh=|+z1IBcP0`!~t`">
+                            <field name="TEXT">**1. In order to participate in the species, you have to follow the [species rules](https://toyhou.se/~world/157317.unknown-xy/page/101129.species-tos), [Discord T.O.S](https://discord.com/guidelines), [Toyhou.se rules and TOS](https://toyhou.se/~rules) (if you are owning a Tekirai).**      ❖ Must be 13+      ❖ Profile pictures and nicknames must be SFW  **2. 18+ content and real-life gore are not permitted within this server.**      ❖ Messages and conversation topics are included  **3. This is a dual-language species.**      ❖ English/中文 can both be spoken.  **4. Respect other members and staff.**      ❖ No toxicity or personal attacks      ❖ Listen to the staff and do as they instruct  **5. Discriminatory behaviour towards other members is not tolerated.**      ❖ Derogatory language directed at yourself/others is included  **6. Conversation rules:**      ❖ Please do not spam      ❖ Don’t leak personal information      ❖ Use the correct channel when messaging      ❖ Do not discuss political topics  **7. Don’t minimod.**      ❖ It’s okay to remind members of the rules, but do not try to fulfill the role of a moderator.       ❖ Don’t answer questions in https://discord.com/channels/1150544148181549116/1150554689117618267 because that is the staff’s duty.  **8. Things that need to be spoilered**      ❖ Flashing image/video      ❖ Gore      ❖ Blood if it’s more than 10% of frame  **9. Concerns of rule-breaking**      ❖ Message a staff member or ping them if there is an issue regarding rule-breaking  **10. Punishment**      ❖ Staff will deal with rule-breaking accordingly and assign punishments depending on the severity      ❖ It can be warnings, mute, kicks or blacklist  **11. 点这里看中文版的规则： [未知行星-服务器的规则](https://docs.google.com/document/d/19EZOQZ1_hKcTenXpV4dwZ5iuJx5ZvT2KdkM_SeoqJl8/edit?usp=sharing)**</field>
+                          </shadow>
+                          <block type="jg_text_remake_paragraph_quotes" id="liId3q@/nlO(ilgM;$`Z">
+                            <field name="TEXT">**1. In order to participate in the species, you have to follow the [species rules](https://toyhou.se/~world/157317.unknown-xy/page/101129.species-tos), [Discord T.O.S](https://discord.com/guidelines), [Toyhou.se rules and TOS](https://toyhou.se/~rules) (if you are owning a Tekirai).**&amp;#10;     ❖ Must be 13+&amp;#10;     ❖ Profile pictures and nicknames must be SFW&amp;#10;&amp;#10;**2. 18+ content and real-life gore are not permitted within this server.**&amp;#10;     ❖ Messages and conversation topics are included&amp;#10;&amp;#10;**3. This is a dual-language species.**&amp;#10;     ❖ English/中文 can both be spoken.&amp;#10;&amp;#10;**4. Respect other members and staff.**&amp;#10;     ❖ No toxicity or personal attacks&amp;#10;     ❖ Listen to the staff and do as they instruct&amp;#10;&amp;#10;**5. Discriminatory behaviour towards other members is not tolerated.**&amp;#10;     ❖ Derogatory language directed at yourself/others is included&amp;#10;&amp;#10;**6. Conversation rules:**&amp;#10;     ❖ Please do not spam&amp;#10;     ❖ Don’t leak personal information&amp;#10;     ❖ Use the correct channel when messaging&amp;#10;     ❖ Do not discuss political topics&amp;#10;&amp;#10;**7. Don’t minimod.**&amp;#10;     ❖ It’s okay to remind members of the rules, but do not try to fulfill the role of a moderator. &amp;#10;     ❖ Don’t answer questions in https://discord.com/channels/1150544148181549116/1150554689117618267 because that is the staff’s duty.&amp;#10;&amp;#10;**8. Things that need to be spoilered**&amp;#10;     ❖ Flashing image/video&amp;#10;     ❖ Gore&amp;#10;     ❖ Blood if it’s more than 10% of frame&amp;#10;&amp;#10;**9. Concerns of rule-breaking**&amp;#10;     ❖ Message a staff member or ping them if there is an issue regarding rule-breaking&amp;#10;&amp;#10;**10. Punishment**&amp;#10;     ❖ Staff will deal with rule-breaking accordingly and assign punishments depending on the severity&amp;#10;     ❖ It can be warnings, mute, kicks or blacklist&amp;#10;&amp;#10;**11. 点这里看中文版的规则： [未知行星-服务器的规则](https://docs.google.com/document/d/19EZOQZ1_hKcTenXpV4dwZ5iuJx5ZvT2KdkM_SeoqJl8/edit?usp=sharing)**&amp;#10;</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="s4d_send_channel" id="5e|~qAHr*_Q5J1bY$%W*">
+                <value name="CONTENT">
+                  <block type="s4d_embed_send" id="NZG~$;cw0v4V$B2,Q3_b">
+                    <field name="NAME">Rules</field>
+                  </block>
+                </value>
+                <value name="CHANNEL">
+                  <block type="s4d_get_channel" id="^.}VV_CI|_PVail:bT$A">
+                    <field name="SEARCH_TYPE">ID</field>
+                    <value name="VALUE">
+                      <block type="jg_text_remake_paragraph_quotes" id="M@tQ?^D.k_/_pTF1)~u~">
+                        <field name="TEXT">1150544561991590058</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="s4d_on_member_join" id="F6@j@zV.ca7Q,^7K~rM[" x="-2265" y="1761">
+    <statement name="STATEMENTS">
+      <block type="s4d_embed_create" id="zu35/UyyhtcsyQ7F$oPS">
+        <field name="NAME">Welcome</field>
+        <statement name="THEN">
+          <block type="s4d_embed_set_desc" id="B6QBG|sF:^#h_:a@+{hJ">
+            <value name="DESC">
+              <shadow type="text" id="QkbJuH=D(Q;uJ/U7EJI=">
+                <field name="TEXT">Some desc here...</field>
+              </shadow>
+              <block type="text_join" id="@h6D~aCx%+@_xZ1qaZAz">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="s4d_joining_member" id="5%0KTw.[=#4N#`Bcj)3="></block>
+                </value>
+                <value name="ADD1">
+                  <block type="jg_text_remake_paragraph_quotes" id="1l2]?vx9]5-8X5eMWk|C">
+                    <field name="TEXT"> Hello! Welcome to UNKNOWN XY, the world of Tekirai! Read the rules and get verified in https://discord.com/channels/1150544148181549116/1150838224873341069 in order to get access to the rest of the server. We hope you enjoy your stay here！&amp;#10;旅行者你好！欢迎来到未知行星！请读一下规则然后去https://discord.com/channels/1150544148181549116/1150838224873341069 进行验证。</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="s4d_embed_set_color" id="9B+l/@?3r4#(K3.A9im*">
+                <value name="COLOUR">
+                  <shadow type="colour_picker" id="m]MIT^QzYkP$SiSiN|E|">
+                    <field name="COLOUR">#3366ff</field>
+                  </shadow>
+                  <block type="fz_color" id="^1[JaIF+k=!.t!5l0m7B">
+                    <field name="COLOR">#3e69ff</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="s4d_send_channel" id="q_Wy1ajs2|w5wqb#p;P(">
+            <value name="CONTENT">
+              <block type="s4d_embed_send" id="[je!O(}|m`l.A4Bg9sau">
+                <field name="NAME">Welcome</field>
+              </block>
+            </value>
+            <value name="CHANNEL">
+              <block type="s4d_get_channel" id="=q?!0U#Cih83)8sKwBpJ">
+                <field name="SEARCH_TYPE">ID</field>
+                <value name="VALUE">
+                  <block type="jg_text_remake_paragraph_quotes" id="U_$r8t,+]vU*g|CLPLFk">
+                    <field name="TEXT">1150982448939810878</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
