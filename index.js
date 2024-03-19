@@ -99,7 +99,7 @@
   }
 
 
-  await s4d.client.login(process.env.DISCORD_TOKEN).catch((e) => {
+  await s4d.client.login(process.env.TOKEN).catch((e) => {
     const tokenInvalid = true;
     const tokenError = e;
     if (e.toString().toLowerCase().includes("token")) {
