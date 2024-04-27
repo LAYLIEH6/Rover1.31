@@ -111,7 +111,7 @@
 
   s4d.client.on('messageCreate', async (s4dmessage) => {
     if (String((s4dmessage.content)).includes(String('rover'))) {
-      response = ['Did someone say my name?', '*Sneeze*', 'woof'];
+      response = ['Did someone call for me?', '*Sneeze*', 'woof', '*jumps*'];
       s4dmessage.channel.send((listsGetRandomItem(response, false)));
     }
 
@@ -150,8 +150,8 @@
             **/item inventory**
                  ❖ View the items in your inventory
     
-            **/item-give**
-                 ❖ Transaction: give an item to another user(comes from your own inventory)
+            **/item-sell**
+                 ❖ Transaction: sell an item to another user(comes from your own inventory)
     
             **/item info**
                  ❖ You can view more information about a specific item`));
@@ -223,8 +223,8 @@
           **2. 18+ content and real-life gore are not permitted within this server.**
                ❖ Messages and conversation topics are included
     
-          **3. Mainly English species**
-               ❖ But there are chinese support and some chinese channels
+          **3. Please keep most conversations in English.**
+               ❖ If you want to speak Chinese go to the Chinese channels
     
           **4. Respect other members and staff.**
                ❖ No toxicity or personal attacks
