@@ -297,6 +297,9 @@
     const deduction = new Database('./database.json')
     s4d.client.on('messageCreate', async (s4dmessage) => {
         if (((s4dmessage.content) || '').startsWith('-pts add' || '')) {
+            s4dmessage.channel.send({
+                content: String('detected')
+            });
             if ((s4dmessage.author)._roles.includes(((s4d.client.guilds.cache.get('1150544148181549116')).roles.cache.get('1150556182893826048')).id)) {
                 if (deduction.has(String((String(s4dmessage.mentions.members.first()) + '')))) {
                     deduction.add(String((String(s4dmessage.mentions.members.first()) + '')), parseInt(1));
