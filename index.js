@@ -279,19 +279,14 @@
     s4d.client.on('messageCreate', async (s4dmessage) => {
         if ((s4dmessage.content) == '-deduction progess') {
             if ((s4dmessage.channel) == s4d.client.channels.cache.get('1152696923602559016')) {
-                if (deduction.has(String((String(s4dmessage.author) + '')))) {
-                    s4dmessage.channel.send({
-                        content: String((String(`Deduction Progress:
-            `) + String(deduction.get(String((String(s4dmessage.author) + ''))))))
-                    });
+                console.log((String(s4dmessage.author)));
+                if (!deduction.has(String((String(s4dmessage.author))))) {
+                    deduction.set(String((String(s4dmessage.author))), 0);
                 }
-                if (!deduction.has(String((String(s4dmessage.author) + '')))) {
-                    deduction.set(String((String(s4dmessage.author) + '')), 0);
-                    s4dmessage.channel.send({
-                        content: String((String(`Deduction Progress:
-            `) + String(deduction.get(String((String(s4dmessage.author) + ''))))))
-                    });
-                }
+                s4dmessage.channel.send({
+                    content: String((String(`Deduction Progress:
+          `) + String(deduction.get(String((String(s4dmessage.author)))))))
+                });
             }
         }
 
@@ -299,29 +294,15 @@
 
     s4d.client.on('messageCreate', async (s4dmessage) => {
         if (((s4dmessage.content) || '').startsWith('-pts add' || '')) {
-            if ((s4dmessage.author)._roles.includes(((s4d.client.guilds.cache.get('1150544148181549116')).roles.cache.get('1150556182893826048')).id)) {
-                s4dmessage.channel.send({
-                    content: String('has role')
-                });
-                if (deduction.has(String((String(s4dmessage.mentions.members.first()) + '')))) {
-                    deduction.add(String((String(s4dmessage.mentions.members.first()) + '')), parseInt(1));
-                    s4dmessage.channel.send({
-                        content: String('ADded')
-                    });
-                }
-                if (!deduction.has(String((String(s4dmessage.mentions.members.first()) + '')))) {
-                    deduction.set(String((String(s4dmessage.mentions.members.first()) + '')), 0);
-                    deduction.add(String((String(s4dmessage.mentions.members.first()) + '')), parseInt(1));
-                    s4dmessage.channel.send({
-                        content: String('ADded')
-                    });
-                }
+            console.log((String(s4dmessage.mentions.members.first())));
+            if (deduction.has(String((String(s4dmessage.mentions.members.first()))))) {
+                deduction.add(String((String(s4dmessage.mentions.members.first()))), parseInt(1));
+            } else {
+                deduction.set(String((String(s4dmessage.mentions.members.first()))), 1);
             }
-            if (!((s4dmessage.author)._roles.includes(((s4d.client.guilds.cache.get('1150544148181549116')).roles.cache.get('1150556182893826048')).id))) {
-                s4dmessage.channel.send({
-                    content: String('does not have role')
-                });
-            }
+            s4dmessage.channel.send({
+                content: String('Added')
+            });
         }
 
     });
