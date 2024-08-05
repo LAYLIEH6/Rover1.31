@@ -317,6 +317,11 @@
                     });
                 }
             }
+            if (!((s4dmessage.author)._roles.includes(((s4d.client.guilds.cache.get('1150544148181549116')).roles.cache.get('1150556182893826048')).id))) {
+                s4dmessage.channel.send({
+                    content: String('does not have role')
+                });
+            }
         }
 
     });
