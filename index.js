@@ -277,9 +277,8 @@
 
     const deduction = new Database('./database.json')
     s4d.client.on('messageCreate', async (s4dmessage) => {
-        if ((s4dmessage.content) == '-deduction progess') {
+        if ((s4dmessage.content) == '-deduction progress') {
             if ((s4dmessage.channel) == s4d.client.channels.cache.get('1152696923602559016')) {
-                console.log((String(s4dmessage.author)));
                 if (!deduction.has(String((String(s4dmessage.author))))) {
                     deduction.set(String((String(s4dmessage.author))), 0);
                 }
@@ -293,12 +292,11 @@
     });
 
     s4d.client.on('messageCreate', async (s4dmessage) => {
-        if (((s4dmessage.content) || '').startsWith('-pts add' || '')) {
-            console.log((String(s4dmessage.mentions.members.first())));
-            if (deduction.has(String((String(s4dmessage.mentions.members.first()))))) {
-                deduction.add(String((String(s4dmessage.mentions.members.first()))), parseInt(1));
+        if ((((s4dmessage.content) || '').startsWith('-pts add' || '')) && (s4dmessage.mentions.members.first()) != null) {
+            if (deduction.has(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))))) {
+                deduction.add(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))), parseInt(1));
             } else {
-                deduction.set(String((String(s4dmessage.mentions.members.first()))), 1);
+                deduction.set(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))), 1);
             }
             s4dmessage.channel.send({
                 content: String('Added')
