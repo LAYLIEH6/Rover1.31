@@ -22,6 +22,7 @@
   let URL = require('url')
   const ms = require("ms")
   let https = require("https")
+  const Database = require("easy-json-database")
 
   // define s4d components (pretty sure 90% of these arnt even used/required)
   let s4d = {
@@ -274,5 +275,44 @@
     s4d.joiningMember = null
   });
 
-  return s4d
+      s4d.client.on('messageCreate', async (s4dmessage) => {
+        if ((s4dmessage.content) == '-deduction progess') {
+            if ((s4dmessage.channel) == s4d.client.channels.cache.get('1152696923602559016')) {
+                if (deduction.has(String((String(s4dmessage.author) + '')))) {
+                    s4dmessage.channel.send({
+                        content: String((String(`Deduction Progress:
+            `) + String(deduction.get(String((String(s4dmessage.author) + ''))))))
+                    });
+                }
+                deduction.set(String((String(s4dmessage.author) + '')), 0);
+                s4dmessage.channel.send({
+                    content: String((String(`Deduction Progress:
+          `) + String(deduction.get(String((String(s4dmessage.author) + ''))))))
+                });
+            }
+        }
+
+    });
+
+    const deduction = new Database('./database.json')
+    s4d.client.on('messageCreate', async (s4dmessage) => {
+        if (((s4dmessage.content) || '').startsWith('-pts add' || '')) {
+            if ((s4dmessage.author)._roles.includes(((s4d.client.guilds.cache.get('1150544148181549116')).roles.cache.get('1150556182893826048')).id)) {
+                if (deduction.has(String((String(s4dmessage.mentions.members.first()) + '')))) {
+                    deduction.add(String((String(s4dmessage.mentions.members.first()) + '')), parseInt(1));
+                    s4dmessage.channel.send({
+                        content: String('ADded')
+                    });
+                }
+                deduction.set(String((String(s4dmessage.mentions.members.first()) + '')), 0);
+                deduction.add(String((String(s4dmessage.mentions.members.first()) + '')), parseInt(1));
+                s4dmessage.channel.send({
+                    content: String('ADded')
+                });
+            }
+        }
+
+    });
+
+    return s4d
 })();
