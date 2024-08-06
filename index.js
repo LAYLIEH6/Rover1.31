@@ -78,7 +78,7 @@
 
     // MongoDB setup
     const uri = 'mongodb+srv://laylahfree3:Tdct8238!@rover.97zqhyl.mongodb.net/?retryWrites=true&w=majority&appName=Rover';
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(uri);
     let db, collection;
 
     try {
