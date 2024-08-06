@@ -83,7 +83,7 @@
 
     try {
         await client.connect();
-        db = client.db('Rover'); // Replace 'Rover' with your database name
+        db = client.db('deduction'); // Replace 'Rover' with your database name
         collection = db.collection('deduction'); // Replace 'points' with your collection name
     } catch (err) {
         console.error('Failed to connect to MongoDB', err);
@@ -290,7 +290,7 @@
         if ((s4dmessage.content || '').startsWith('-pts add') && s4dmessage.mentions.members.first()) {
             increment = parseInt(s4dmessage.content.split(' ')[3]);
             let targetId = s4dmessage.mentions.members.first().id;
-            let result = await collection.updateOne(
+            let result = await collection.findOneAndUpdate(
                 { _id: targetId },
                 { $inc: { points: increment } },
                 { upsert: true }
