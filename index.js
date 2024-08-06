@@ -22,7 +22,9 @@
   let URL = require('url')
   const ms = require("ms")
   let https = require("https")
-  const Database = require("easy-json-database")
+    let {
+        DB
+    } = require("mongquick");
 
   // define s4d components (pretty sure 90% of these arnt even used/required)
   let s4d = {
@@ -275,20 +277,21 @@
     s4d.joiningMember = null
   });
 
-    const deduction = new Database('./database.json')
+  
+    const mdb = new DB(process.env.MONGODB_URL);
     s4d.client.on('messageCreate', async (s4dmessage) => {
         if ((s4dmessage.content) == '-deduction progress') {
             if ((s4dmessage.channel) == s4d.client.channels.cache.get('1152696923602559016')) {
-                if (!deduction.has(String((String(s4dmessage.author))))) {
-                    deduction.set(String((String(s4dmessage.author))), 0);
+                if (!(await (mdb.has((String(s4dmessage.author)))))) {
+                    mdb.set((String(s4dmessage.author)), 0);
                 }
                 var progress = new Discord.MessageEmbed();
                 progress.setColor('#ffcc66');
                 images = ['https://pbs.twimg.com/media/GN98cusXIAA6In3?format=jpg&name=900x900', 'https://pbs.twimg.com/media/GMabeZYa0AAFiWv?format=jpg&name=large', 'https://pbs.twimg.com/media/GBNlJw7awAARvOd?format=jpg&name=large'];
                 progress.setThumbnail(String((listsGetRandomItem(images, false))));
-                progress.setTitle(String((['@', (s4dmessage.author).username, '\'s Deduction Progress'].join(''))))
+                progress.setTitle(String('Deduction Progress'))
                 progress.setURL(String());
-                progress.setDescription(String(('Points: ' + String(deduction.get(String((String(s4dmessage.author))))))));
+                progress.setDescription(String(([s4dmessage.author, '\'s Points: ', (await (mdb.get((String(s4dmessage.author)))))].join(''))));
 
                 s4dmessage.channel.send({
                     embeds: [progress]
@@ -298,13 +301,14 @@
 
     });
 
+
     s4d.client.on('messageCreate', async (s4dmessage) => {
         if ((((s4dmessage.content) || '').startsWith('-pts add' || '')) && (s4dmessage.mentions.members.first()) != null) {
             increment = (s4dmessage.content).split(' ')[3];
-            if (deduction.has(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))))) {
-                deduction.add(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))), parseInt(increment));
+            if ((await (mdb.has((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String(''))))))) {
+                mdb.add((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String(''))), increment);
             } else {
-                deduction.set(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))), increment);
+                mdb.set((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String(''))), increment);
             }
             var Adding_Points = new Discord.MessageEmbed();
             Adding_Points.setColor('#ffcc66');
