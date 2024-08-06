@@ -135,7 +135,7 @@
         }
     });
 
-    await s4d.client.login('YOUR_BOT_TOKEN_HERE').catch((e) => {
+    await s4d.client.login(process.env.TOKEN).catch((e) => {
         const tokenInvalid = true;
         const tokenError = e;
         if (e.toString().toLowerCase().includes("token")) {
