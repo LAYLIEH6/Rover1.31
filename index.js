@@ -286,7 +286,7 @@
                 progress.setColor('#ffcc66');
                 images = ['https://pbs.twimg.com/media/GN98cusXIAA6In3?format=jpg&name=900x900', 'https://pbs.twimg.com/media/GMabeZYa0AAFiWv?format=jpg&name=large', 'https://pbs.twimg.com/media/GBNlJw7awAARvOd?format=jpg&name=large'];
                 progress.setThumbnail(String((listsGetRandomItem(images, false))));
-                progress.setTitle(String((String(s4dmessage.author) + '\'s Deduction Progress')))
+                progress.setTitle(String((['@', (s4dmessage.author).username, '\'s Deduction Progress'].join(''))))
                 progress.setURL(String());
                 progress.setDescription(String(('Points: ' + String(deduction.get(String((String(s4dmessage.author))))))));
 
@@ -301,14 +301,19 @@
     s4d.client.on('messageCreate', async (s4dmessage) => {
         if ((((s4dmessage.content) || '').startsWith('-pts add' || '')) && (s4dmessage.mentions.members.first()) != null) {
             increment = (s4dmessage.content).split(' ')[3];
-            console.log(increment);
             if (deduction.has(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))))) {
                 deduction.add(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))), parseInt(increment));
             } else {
                 deduction.set(String((String((String(s4dmessage.mentions.members.first()))).replaceAll('!', String('')))), increment);
             }
+            var Adding_Points = new Discord.MessageEmbed();
+            Adding_Points.setColor('#ffcc66');
+            Adding_Points.setTitle(String('Adding Points'))
+            Adding_Points.setURL(String());
+            Adding_Points.setDescription(String(('Added ' + String(increment))));
+
             s4dmessage.channel.send({
-                content: String('Added')
+                embeds: [Adding_Points]
             });
         }
 
