@@ -333,7 +333,7 @@
                 Removing_Points.setColor('#ffcc66');
                 Removing_Points.setTitle(String('Removing Points'))
                 Removing_Points.setURL(String());
-                Removing_Points.setDescription(String((['Removed ', increment, 'from ', s4dmessage.mentions.members.first()].join(''))));
+                Removing_Points.setDescription(String((['Removed ', increment, ' from ', s4dmessage.mentions.members.first()].join(''))));
 
                 s4dmessage.channel.send({
                     embeds: [Removing_Points]
