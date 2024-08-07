@@ -6,7 +6,7 @@
     const Discord = require("discord.js");
     const fs = require('fs');
     let process = require('process');
-    const { MessageEmbed, MessageButton, MessageActionRow, Permissions, MessageSelectMenu  } = require('discord.js')
+    const { EmbedBuilder, MessageButton, MessageActionRow, Permissions, MessageSelectMenu  } = require('discord.js')
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     const { Client, GatewayIntentBits, Partials } = require('discord.js');
     
@@ -107,7 +107,7 @@
                 }
             });
             if ((s4dmessage.content || '').startsWith('https://toyhou.se/' || '')) {
-                var Verified = new Discord.MessageEmbed();
+                var Verified = new Discord.EmbedBuilder();
                 Verified.setTitle('Success!');
                 Verified.setURL('');
                 Verified.setDescription('You have been verified! 恭喜，你已通过验证！');
@@ -117,7 +117,7 @@
                 s4dmessage.member.roles.add(s4dmessage.member.guild.roles.cache.find(role => role.id === 'Citizen' || role.name === 'Citizen' || '@' + role.name === 'Citizen'));
                 s4dmessage.channel.send({ embeds: [Verified] });
             }
-            var Verify = new Discord.MessageEmbed();
+            var Verify = new Discord.EmbedBuilder();
             Verify.setTitle('Verify Instructions');
             Verify.setURL('');
             Verify.setDescription('Please enter your toyhou.se profile link in order to be verified and given access to the rest of the server. **This process is automated.** If you don\'t have toyhouse, you can send a different social link. (This will be reviewed manually by a moderator) 请在这里发你的toyhou.se人物简介。验证过程是全自动的，除非你没发toyhou.se。如果没有toyhou.se的话，你可以发送社交简介。（Mod 会审批的）');
@@ -150,7 +150,7 @@
         }
         if (s4dmessage.channel.id == '1152696923602559016') {
             if ((s4dmessage.content || '').startsWith('r-help' || '')) {
-                var w = new Discord.MessageEmbed();
+                var w = new Discord.EmbedBuilder();
                 w.setTitle('Shopkeeper Commands');
                 w.setURL('');
                 w.setDescription(`**!bal**
@@ -191,8 +191,8 @@
             return;
         }
         if (s4dmessage.channel.id == '1150544561991590058') {
-            var Rules = new Discord.MessageEmbed
-            var Rules = new Discord.MessageEmbed();
+            var Rules = new Discord.EmbedBuilder
+            var Rules = new Discord.EmbedBuilder();
             Rules.setTitle('Server Rules');
             Rules.setURL('');
             Rules.setColor("#3e69ff");
@@ -244,7 +244,7 @@
 
     s4d.client.on('guildMemberAdd', async (param1) => {
         s4d.joiningMember = param1;
-        var Welcome = new Discord.MessageEmbed();
+        var Welcome = new Discord.EmbedBuilder();
         Welcome.setDescription(`${s4d.joiningMember.user} Hello! Welcome to UNKNOWN XY, the world of Tekirai! Read the rules and get verified in https://discord.com/channels/1150544148181549116/1150838224873341069 in order to get access to the rest of the server. We hope you enjoy your stay here！旅行者你好！欢迎来到未知行星！请读一下规则然后去https://discord.com/channels/1150544148181549116/1150838224873341069 进行验证。`);
         Welcome.setColor("#3e69ff");
 
@@ -261,7 +261,7 @@
                     await collection.insertOne({ _id: userId, points: 0 });
                     userPoints = { points: 0 };
                 }
-                var progress = new Discord.MessageEmbed();
+                var progress = new Discord.EmbedBuilder();
                 progress.setColor('#ffcc66');
                 images = ['https://pbs.twimg.com/media/GN98cusXIAA6In3?format=jpg&name=900x900', 'https://pbs.twimg.com/media/GMabeZYa0AAFiWv?format=jpg&name=large', 'https://pbs.twimg.com/media/GBNlJw7awAARvOd?format=jpg&name=large'];
                 progress.setThumbnail(String((listsGetRandomItem(images, false))));
@@ -289,7 +289,7 @@
                     { upsert: true }
                 );
 
-                var Adding_Points = new Discord.MessageEmbed();
+                var Adding_Points = new Discord.EmbedBuilder();
                 Adding_Points.setColor('#ffcc66');
                 Adding_Points.setTitle(String('Adding Points'))
                 Adding_Points.setURL(String());
@@ -299,7 +299,7 @@
                     embeds: [Adding_Points]
                 });
             } else {
-                var Error_Add = new Discord.MessageEmbed();
+                var Error_Add = new Discord.EmbedBuilder();
                 Error_Add.setColor('#ffcc66');
                 Error_Add.setTitle(String('Error'))
                 Error_Add.setURL(String());
@@ -321,7 +321,7 @@
                     { upsert: true }
                 );
 
-                var Removing_Points = new Discord.MessageEmbed();
+                var Removing_Points = new Discord.EmbedBuilder();
                 Removing_Points.setColor('#ffcc66');
                 Removing_Points.setTitle(String('Removing Points'))
                 Removing_Points.setURL(String());
@@ -331,7 +331,7 @@
                     embeds: [Removing_Points]
                 });
             } else {
-                var Error_Remove = new Discord.MessageEmbed();
+                var Error_Remove = new Discord.EmbedBuilder();
                 Error_Remove.setColor('#ffcc66');
                 Error_Remove.setTitle(String('Error'))
                 Error_Remove.setURL(String());
