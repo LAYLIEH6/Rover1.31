@@ -8,22 +8,12 @@
     const fs = require('fs');
     let process = require('process');
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    const express = require('express')
-    const app = express()
-    const port = process.env.PORT || 4000;
-    app.get('/', (req, res) => {
-      res.send('Hello World!')
-    })
     
-    app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`)
-    })
-
     // block imports
     const os = require("os-utils");
     let URL = require('url');
     const ms = require("ms");
-    const https = require("https");
+    let https = require("https");
     const { MongoClient } = require('mongodb');
 
     // define s4d components (pretty sure 90% of these arnt even used/required)
