@@ -290,7 +290,7 @@
         if ((s4dmessage.content || '').startsWith('-pts add') && s4dmessage.mentions.members.first()) {
             increment = parseInt(s4dmessage.content.split(' ')[3]);
             let targetId = s4dmessage.mentions.members.first().id;
-            let result = await collection.findOneAndUpdate(
+            await collection.findOneAndUpdate(
                 { _id: targetId },
                 { $inc: { points: increment } },
                 { upsert: true }
