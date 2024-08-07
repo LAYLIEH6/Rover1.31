@@ -275,7 +275,7 @@
                 progress.setThumbnail(String((listsGetRandomItem(images, false))));
                 progress.setTitle(String('Deduction Progress'))
                 progress.setURL(String());
-                progress.setDescription(String(s4dmessage.authorz), '\'s Points: ', userPoints.points);
+                progress.setDescription(`${s4dmessage.author}'s Points: ${userPoints.points}`);
 
                 s4dmessage.channel.send({
                     embeds: [progress]
