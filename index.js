@@ -1,20 +1,14 @@
 (async () => {
     // default imports
-    const events = require('events');
     const { exec } = require("child_process");
     const logs = require("discord-logs");
     const Discord = require("discord.js");
     const fs = require('fs');
     let process = require('process');
-    const { EmbedBuilder, MessageButton, MessageActionRow, Permissions, MessageSelectMenu  } = require('discord.js')
-    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    const { Client, GatewayIntentBits, Partials } = require('discord.js');
+    const { GatewayIntentBits } = require('discord.js');
     
     // block imports
     const os = require("os-utils");
-    let URL = require('url');
-    const ms = require("ms");
-    var http = require("http");
     const { MongoClient } = require('mongodb');
 
     // define s4d components (pretty sure 90% of these arnt even used/required)
@@ -45,14 +39,13 @@
 
     // create a new discord client
     s4d.client = new s4d.Discord.Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent, // This is crucial for reading message content
-        GatewayIntentBits.GuildMembers
-    ],
-    partials: [Partials.Channel]
-});
+        intents: [
+            GatewayIntentBits.Guilds,
+            GatewayIntentBits.GuildMessages,
+            GatewayIntentBits.MessageContent, // This is crucial for reading message content
+            GatewayIntentBits.GuildMembers
+        ],
+    });
 
     // when the bot is connected say so
     s4d.client.on('ready', () => {
@@ -107,9 +100,8 @@
                 }
             });
             if ((s4dmessage.content || '').startsWith('https://toyhou.se/' || '')) {
-                var Verified = new Discord.EmbedBuilder();
+                var Verified = new Discord.EmbedBuilder;
                 Verified.setTitle('Success!');
-                Verified.setURL('');
                 Verified.setDescription('You have been verified! 恭喜，你已通过验证！');
                 Verified.setColor("#3e69ff");
 
@@ -117,9 +109,8 @@
                 s4dmessage.member.roles.add(s4dmessage.member.guild.roles.cache.find(role => role.id === 'Citizen' || role.name === 'Citizen' || '@' + role.name === 'Citizen'));
                 s4dmessage.channel.send({ embeds: [Verified] });
             }
-            var Verify = new Discord.EmbedBuilder();
+            var Verify = new Discord.EmbedBuilder;
             Verify.setTitle('Verify Instructions');
-            Verify.setURL('');
             Verify.setDescription('Please enter your toyhou.se profile link in order to be verified and given access to the rest of the server. **This process is automated.** If you don\'t have toyhouse, you can send a different social link. (This will be reviewed manually by a moderator) 请在这里发你的toyhou.se人物简介。验证过程是全自动的，除非你没发toyhou.se。如果没有toyhou.se的话，你可以发送社交简介。（Mod 会审批的）');
             Verify.setColor("#3e69ff");
 
@@ -150,9 +141,8 @@
         }
         if (s4dmessage.channel.id == '1152696923602559016') {
             if ((s4dmessage.content || '').startsWith('r-help' || '')) {
-                var w = new Discord.EmbedBuilder();
+                var w = new Discord.EmbedBuilder;
                 w.setTitle('Shopkeeper Commands');
-                w.setURL('');
                 w.setDescription(`**!bal**
  ❖ View your balance
 
@@ -191,10 +181,8 @@
             return;
         }
         if (s4dmessage.channel.id == '1150544561991590058') {
-            var Rules = new Discord.EmbedBuilder
-            var Rules = new Discord.EmbedBuilder();
+            var Rules = new Discord.EmbedBuilder;
             Rules.setTitle('Server Rules');
-            Rules.setURL('');
             Rules.setColor("#3e69ff");
             Rules.setDescription(`**1. In order to participate in the species, you have to follow the [species rules](https://toyhou.se/~world/157317.unknown-xy/page/101129.species-tos), [Discord T.O.S](https://discord.com/guidelines), [Toyhou.se rules and TOS](https://toyhou.se/~rules) (if you are owning a Tekirai).**
                ❖ Must be 13+
@@ -244,7 +232,7 @@
 
     s4d.client.on('guildMemberAdd', async (param1) => {
         s4d.joiningMember = param1;
-        var Welcome = new Discord.EmbedBuilder();
+        var Welcome = new Discord.EmbedBuilder;
         Welcome.setDescription(`${s4d.joiningMember.user} Hello! Welcome to UNKNOWN XY, the world of Tekirai! Read the rules and get verified in https://discord.com/channels/1150544148181549116/1150838224873341069 in order to get access to the rest of the server. We hope you enjoy your stay here！旅行者你好！欢迎来到未知行星！请读一下规则然后去https://discord.com/channels/1150544148181549116/1150838224873341069 进行验证。`);
         Welcome.setColor("#3e69ff");
 
@@ -261,12 +249,11 @@
                     await collection.insertOne({ _id: userId, points: 0 });
                     userPoints = { points: 0 };
                 }
-                var progress = new Discord.EmbedBuilder();
+                var progress = new Discord.EmbedBuilder;
                 progress.setColor('#ffcc66');
                 images = ['https://pbs.twimg.com/media/GN98cusXIAA6In3?format=jpg&name=900x900', 'https://pbs.twimg.com/media/GMabeZYa0AAFiWv?format=jpg&name=large', 'https://pbs.twimg.com/media/GBNlJw7awAARvOd?format=jpg&name=large'];
                 progress.setThumbnail(String((listsGetRandomItem(images, false))));
                 progress.setTitle(String('Deduction Progress'))
-                progress.setURL(String());
                 progress.setDescription(`${s4dmessage.author}'s Points: ${userPoints.points}`);
 
                 s4dmessage.channel.send({
@@ -289,20 +276,18 @@
                     { upsert: true }
                 );
 
-                var Adding_Points = new Discord.EmbedBuilder();
+                var Adding_Points = new Discord.EmbedBuilder;
                 Adding_Points.setColor('#ffcc66');
                 Adding_Points.setTitle(String('Adding Points'))
-                Adding_Points.setURL(String());
                 Adding_Points.setDescription(String((['Added ', increment, ' to ', s4dmessage.mentions.members.first()].join(''))));
 
                 s4dmessage.channel.send({
                     embeds: [Adding_Points]
                 });
             } else {
-                var Error_Add = new Discord.EmbedBuilder();
+                var Error_Add = new Discord.EmbedBuilder;
                 Error_Add.setColor('#ffcc66');
                 Error_Add.setTitle(String('Error'))
-                Error_Add.setURL(String());
                 Error_Add.setDescription(String('Lacking information, unable to add points'));
 
                 s4dmessage.channel.send({
@@ -321,20 +306,18 @@
                     { upsert: true }
                 );
 
-                var Removing_Points = new Discord.EmbedBuilder();
+                var Removing_Points = new Discord.EmbedBuilder;
                 Removing_Points.setColor('#ffcc66');
                 Removing_Points.setTitle(String('Removing Points'))
-                Removing_Points.setURL(String());
                 Removing_Points.setDescription(String((['Removed ', increment, ' from ', s4dmessage.mentions.members.first()].join(''))));
 
                 s4dmessage.channel.send({
                     embeds: [Removing_Points]
                 });
             } else {
-                var Error_Remove = new Discord.EmbedBuilder();
+                var Error_Remove = new Discord.EmbedBuilder;
                 Error_Remove.setColor('#ffcc66');
                 Error_Remove.setTitle(String('Error'))
-                Error_Remove.setURL(String());
                 Error_Remove.setDescription(String('Lacking information, unable to remove points'));
 
                 s4dmessage.channel.send({
