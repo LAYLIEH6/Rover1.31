@@ -6,6 +6,7 @@
     const Discord = require("discord.js");
     const fs = require('fs');
     let process = require('process');
+    const { MessageEmbed, MessageButton, MessageActionRow, Permissions, MessageSelectMenu  } = require('discord.js')
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     const { Client, GatewayIntentBits, Partials, MessageEmbed, MessageButton, MessageActionRow, Permissions, MessageSelectMenu  } = require('discord.js');
     
