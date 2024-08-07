@@ -8,6 +8,7 @@
     const fs = require('fs');
     let process = require('process');
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const { Client, GatewayIntentBits, Partials } = require('discord.js');
     
     // block imports
     const os = require("os-utils");
@@ -33,15 +34,6 @@
         }
     };
 
-    // check if d.js is v13
-    if (!require('./package.json').dependencies['discord.js'].startsWith("^13.")) {
-        let file = JSON.parse(fs.readFileSync('package.json'));
-        file.dependencies['discord.js'] = '^13.16.0';
-        fs.writeFileSync('package.json', JSON.stringify(file, null, 4));
-        exec('npm i');
-        throw new Error("Seems you aren't using v13 please re-run or run `npm i discord.js@13.16.0`");
-    }
-
     // check if discord-logs is v2
     if (!require('./package.json').dependencies['discord-logs'].startsWith("^2.")) {
         let file = JSON.parse(fs.readFileSync('package.json'));
@@ -53,13 +45,7 @@
 
     // create a new discord client
     s4d.client = new s4d.Discord.Client({
-        intents: [
-            Object.values(s4d.Discord.Intents.FLAGS).reduce((acc, p) => acc | p, 0)
-        ],
-        partials: [
-            "REACTION",
-            "CHANNEL"
-        ]
+        intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel]
     });
 
     // when the bot is connected say so
