@@ -45,8 +45,14 @@
 
     // create a new discord client
     s4d.client = new s4d.Discord.Client({
-        intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel]
-    });
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent, // This is crucial for reading message content
+        GatewayIntentBits.GuildMembers
+    ],
+    partials: [Partials.Channel]
+});
 
     // when the bot is connected say so
     s4d.client.on('ready', () => {
