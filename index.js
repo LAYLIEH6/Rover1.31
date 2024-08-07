@@ -13,7 +13,7 @@
     const os = require("os-utils");
     let URL = require('url');
     const ms = require("ms");
-    let https = require("https");
+    var http = require("http");
     const { MongoClient } = require('mongodb');
 
     // define s4d components (pretty sure 90% of these arnt even used/required)
