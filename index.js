@@ -287,7 +287,7 @@
     s4d.client.on('messageCreate', async (s4dmessage) => {
         if ((((s4dmessage.content) || '').startsWith('-pts add' || '')) && (s4dmessage.mentions.members.first()) != null) {
             if ((s4dmessage.content).split(' ').length == 4) {
-                increment = (s4dmessage.content).split(' ')[3];
+                increment = parseInt((s4dmessage.content).split(' ')[3]);
 
                 let targetId = s4dmessage.mentions.members.first().id;
 
@@ -319,7 +319,7 @@
             }
         } else if ((((s4dmessage.content) || '').startsWith('-pts remove' || '')) && (s4dmessage.mentions.members.first()) != null) {
             if ((s4dmessage.content).split(' ').length == 4) {
-                increment = (s4dmessage.content).split(' ')[3];
+                increment = parseInt((s4dmessage.content).split(' ')[3]);
 
                 let targetId = s4dmessage.mentions.members.first().id;
 
