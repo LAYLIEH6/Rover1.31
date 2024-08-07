@@ -4,11 +4,10 @@
     const { exec } = require("child_process");
     const logs = require("discord-logs");
     const Discord = require("discord.js");
-    const { MessageEmbed, MessageButton, MessageActionRow, Intents, Permissions, MessageSelectMenu } = require("discord.js");
     const fs = require('fs');
     let process = require('process');
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    const { Client, GatewayIntentBits, Partials } = require('discord.js');
+    const { Client, GatewayIntentBits, Partials, MessageEmbed, MessageButton, MessageActionRow, Permissions, MessageSelectMenu  } = require('discord.js');
     
     // block imports
     const os = require("os-utils");
