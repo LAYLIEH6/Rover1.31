@@ -263,6 +263,7 @@
     s4d.client.on('messageCreate', async (s4dmessage) => {
         if ((s4dmessage.content) == '-deduction progress') {
             if ((s4dmessage.channel) == s4d.client.channels.cache.get('1152696923602559016')) {
+                let userId = s4dmessage.author.id;
                 let userPoints = await collection.findOne({ _id: userId });
                 if (!userPoints) {
                     await collection.insertOne({ _id: userId, points: 0 });
@@ -274,7 +275,7 @@
                 progress.setThumbnail(String((listsGetRandomItem(images, false))));
                 progress.setTitle(String('Deduction Progress'))
                 progress.setURL(String());
-                progress.setDescription(String(([s4dmessage.author, '\'s Points: ', (await (mdb.get((String(s4dmessage.author)))))].join(''))));
+                progress.setDescription(String(s4dmessage.authorz), '\'s Points: ', userPoints.points);
 
                 s4dmessage.channel.send({
                     embeds: [progress]
@@ -287,6 +288,8 @@
         if ((((s4dmessage.content) || '').startsWith('-pts add' || '')) && (s4dmessage.mentions.members.first()) != null) {
             if ((s4dmessage.content).split(' ').length == 4) {
                 increment = (s4dmessage.content).split(' ')[3];
+
+                let targetId = s4dmessage.mentions.members.first().id;
 
                 await collection.findOneAndUpdate(
                     { _id: targetId },
@@ -317,6 +320,8 @@
         } else if ((((s4dmessage.content) || '').startsWith('-pts remove' || '')) && (s4dmessage.mentions.members.first()) != null) {
             if ((s4dmessage.content).split(' ').length == 4) {
                 increment = (s4dmessage.content).split(' ')[3];
+
+                let targetId = s4dmessage.mentions.members.first().id;
 
                 await collection.findOneAndUpdate(
                     { _id: targetId },
