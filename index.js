@@ -8,6 +8,16 @@
     const fs = require('fs');
     let process = require('process');
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const express = require('express')
+    const app = express()
+    const port = process.env.PORT || 4000;
+    app.get('/', (req, res) => {
+      res.send('Hello World!')
+    })
+    
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`)
+    })
 
     // block imports
     const os = require("os-utils");
