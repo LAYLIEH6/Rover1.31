@@ -261,9 +261,8 @@
     });
 
     s4d.client.on('messageCreate', async (s4dmessage) => {
-        if (s4dmessage.content === '-deduction progress') {
-            if (s4dmessage.channel.id === '1152696923602559016') {
-                let userId = s4dmessage.author.id;
+        if ((s4dmessage.content) == '-deduction progress') {
+            if ((s4dmessage.channel) == s4d.client.channels.cache.get('1152696923602559016')) {
                 let userPoints = await collection.findOne({ _id: userId });
                 if (!userPoints) {
                     await collection.insertOne({ _id: userId, points: 0 });
@@ -271,39 +270,83 @@
                 }
                 var progress = new Discord.MessageEmbed();
                 progress.setColor('#ffcc66');
-                images = [
-                    'https://pbs.twimg.com/media/GN98cusXIAA6In3?format=jpg&name=900x900',
-                    'https://pbs.twimg.com/media/GMabeZYa0AAFiWv?format=jpg&name=large',
-                    'https://pbs.twimg.com/media/GBNlJw7awAARvOd?format=jpg&name=large'
-                ];
-                progress.setThumbnail(listsGetRandomItem(images, false));
-                progress.setTitle('Deduction Progress');
-                progress.setURL('');
-                progress.setDescription(`${s4dmessage.author}'s Points: ${userPoints.points}`);
+                images = ['https://pbs.twimg.com/media/GN98cusXIAA6In3?format=jpg&name=900x900', 'https://pbs.twimg.com/media/GMabeZYa0AAFiWv?format=jpg&name=large', 'https://pbs.twimg.com/media/GBNlJw7awAARvOd?format=jpg&name=large'];
+                progress.setThumbnail(String((listsGetRandomItem(images, false))));
+                progress.setTitle(String('Deduction Progress'))
+                progress.setURL(String());
+                progress.setDescription(String(([s4dmessage.author, '\'s Points: ', (await (mdb.get((String(s4dmessage.author)))))].join(''))));
 
-                s4dmessage.channel.send({ embeds: [progress] });
+                s4dmessage.channel.send({
+                    embeds: [progress]
+                });
             }
         }
     });
 
     s4d.client.on('messageCreate', async (s4dmessage) => {
-        if ((s4dmessage.content || '').startsWith('-pts add') && s4dmessage.mentions.members.first()) {
-            increment = parseInt(s4dmessage.content.split(' ')[3]);
-            let targetId = s4dmessage.mentions.members.first().id;
-            await collection.findOneAndUpdate(
-                { _id: targetId },
-                { $inc: { points: increment } },
-                { upsert: true }
-            );
-            var Adding_Points = new Discord.MessageEmbed();
-            Adding_Points.setColor('#ffcc66');
-            Adding_Points.setTitle('Adding Points');
-            Adding_Points.setURL('');
-            Adding_Points.setDescription(`Added ${increment} points`);
+        if ((((s4dmessage.content) || '').startsWith('-pts add' || '')) && (s4dmessage.mentions.members.first()) != null) {
+            if ((s4dmessage.content).split(' ').length == 4) {
+                increment = (s4dmessage.content).split(' ')[3];
 
-            s4dmessage.channel.send({ embeds: [Adding_Points] });
+                await collection.findOneAndUpdate(
+                    { _id: targetId },
+                    { $inc: { points: increment } },
+                    { upsert: true }
+                );
+
+                var Adding_Points = new Discord.MessageEmbed();
+                Adding_Points.setColor('#ffcc66');
+                Adding_Points.setTitle(String('Adding Points'))
+                Adding_Points.setURL(String());
+                Adding_Points.setDescription(String((['Added ', increment, ' to ', s4dmessage.mentions.members.first()].join(''))));
+
+                s4dmessage.channel.send({
+                    embeds: [Adding_Points]
+                });
+            } else {
+                var Error_Add = new Discord.MessageEmbed();
+                Error_Add.setColor('#ffcc66');
+                Error_Add.setTitle(String('Error'))
+                Error_Add.setURL(String());
+                Error_Add.setDescription(String('Lacking information, unable to add points'));
+
+                s4dmessage.channel.send({
+                    embeds: [Error_Add]
+                });
+            }
+        } else if ((((s4dmessage.content) || '').startsWith('-pts remove' || '')) && (s4dmessage.mentions.members.first()) != null) {
+            if ((s4dmessage.content).split(' ').length == 4) {
+                increment = (s4dmessage.content).split(' ')[3];
+
+                await collection.findOneAndUpdate(
+                    { _id: targetId },
+                    { $inc: { points: -increment } },
+                    { upsert: true }
+                );
+
+                var Removing_Points = new Discord.MessageEmbed();
+                Removing_Points.setColor('#ffcc66');
+                Removing_Points.setTitle(String('Removing Points'))
+                Removing_Points.setURL(String());
+                Removing_Points.setDescription(String((['Removed ', increment, 'from ', s4dmessage.mentions.members.first()].join(''))));
+
+                s4dmessage.channel.send({
+                    embeds: [Removing_Points]
+                });
+            } else {
+                var Error_Remove = new Discord.MessageEmbed();
+                Error_Remove.setColor('#ffcc66');
+                Error_Remove.setTitle(String('Error'))
+                Error_Remove.setURL(String());
+                Error_Remove.setDescription(String('Lacking information, unable to remove points'));
+
+                s4dmessage.channel.send({
+                    embeds: [Error_Remove]
+                });
+            }
         }
+
     });
 
-    return s4d;
+    return s4d
 })();
