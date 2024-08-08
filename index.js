@@ -6,6 +6,11 @@
     const fs = require('fs');
     let process = require('process');
     const { GatewayIntentBits } = require('discord.js');
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+
     
     // block imports
     const os = require("os-utils");
