@@ -7,16 +7,12 @@
     let process = require('process');
     const { GatewayIntentBits } = require('discord.js');
 
-    const express = require('express');
-    const app = express();
+    var http = require('http');
+    http.createServer(function (req, res) {
+      res.write("I'm alive");
+      res.end();
+    }).listen(3000);
 
-    // Define routes here
-
-    const port = process.env.PORT || 3000;
-
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
     
     // block imports
     const os = require("os-utils");
